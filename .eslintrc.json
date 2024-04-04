@@ -1,0 +1,125 @@
+{
+  "root": true,
+  "ignorePatterns": [
+    "src/**/*"
+  ],
+  "plugins": [
+    "prefer-arrow"
+  ],
+  "rules": {
+    "prefer-arrow/prefer-arrow-functions": [
+      "error",
+      {
+        "disallowPrototype": true,
+        "singleReturnOnly": false,
+        "classPropertiesAllowed": false
+      }
+    ],
+    "prefer-arrow-callback": [
+      "error",
+      {
+        "allowNamedFunctions": true
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "*.ts"
+      ],
+      "parserOptions": {
+        "project": [
+          "tsconfig.json",
+          "e2e/tsconfig.json"
+        ],
+        "createDefaultProgram": true,
+        "ecmaVersion": "latest"
+      },
+      "extends": [
+        "plugin:@angular-eslint/template/process-inline-templates"
+      ],
+      "parser": "@typescript-eslint/parser",
+      "plugins": [
+        "@typescript-eslint",
+        "@angular-eslint/eslint-plugin",
+        "@angular-eslint/eslint-plugin-template"
+      ],
+      "rules": {
+        "no-console": "off",
+        "no-shadow": [
+          "off",
+          {
+            "builtinGlobals": false,
+            "hoist": "functions",
+            "allow": []
+          }
+        ],
+        "@typescript-eslint/naming-convention": [
+          "error",
+          {
+            "selector": [
+              "enumMember"
+            ],
+            "format": [
+              "PascalCase"
+            ]
+          }
+        ],
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "type": "attribute",
+            "style": "camelCase"
+          }
+        ],
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "type": "element",
+            "prefix": [
+              "app",
+              "lib"
+            ],
+            "style": "kebab-case"
+          }
+        ],
+        "quotes": [
+          2,
+          "single",
+          {
+            "avoidEscape": true
+          }
+        ],
+        "max-len": [
+          "error",
+          140,
+          2,
+          {
+            "ignoreUrls": true,
+            "ignoreComments": true,
+            "ignoreRegExpLiterals": true,
+            "ignoreStrings": true,
+            "ignoreTemplateLiterals": false
+          }
+        ]
+      }
+    },
+    {
+      "files": [
+        "*.html"
+      ],
+      "extends": [
+        "plugin:@angular-eslint/template/recommended"
+      ],
+      "rules": {}
+    },
+    {
+      "files": [
+        "*.js"
+      ],
+      "parserOptions": {
+        "ecmaVersion": "latest"
+      }
+    }
+  ]
+}
